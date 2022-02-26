@@ -30,4 +30,6 @@ jobs:
       - name: Check release tag
         id: verify_tag
         if: inputs.verify_tag
-        run: test refs/tags/${{steps.version.outputs.version}} == ${{github.ref}}
+        run: |
+          test refs/tags/${{ steps.version.outputs.version }} == ${{ github.ref }}
+          git branch --contains ${{ steps.version.outputs.version }} | grep ^..${{ github.event.repository.default_branch }}
