@@ -1,4 +1,4 @@
-name: Push
+name: Debug build on push
 on:
   push:
     branches:
