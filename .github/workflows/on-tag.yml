@@ -1,0 +1,19 @@
+name: Tag
+on:
+  push:
+    tags:
+      - v**
+jobs:
+
+  prepare:
+    name: Prepare
+    uses: ./.github/workflows/prepare.yml
+    with:
+      verify-tag: true
+
+  build:
+    name: Build
+    needs: prepare
+    uses: ./.github/workflows/build.yml
+    with:
+      version: ${{needs.prepare.outputs.version}}
