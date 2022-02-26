@@ -15,7 +15,7 @@ jobs:
 
       - name: Generate test data
         run: |
-          echo "Hello" > result.txt
+          echo ${{ github.sha }} > result.txt
           tar -cz result.txt -f result-${{inputs.version}}.tar.gz
 
       - name: Upload data artifacts
