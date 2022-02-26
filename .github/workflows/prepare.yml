@@ -32,4 +32,3 @@ jobs:
         if: inputs.verify_tag
         run: |
           test refs/tags/${{ steps.version.outputs.version }} == ${{ github.ref }}
-
