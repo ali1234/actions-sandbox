@@ -3,7 +3,7 @@ name: Prepare
 on:
   workflow_call:
     inputs:
-      verify-tag:
+      verify_tag:
         type: boolean
         required: true
     outputs:

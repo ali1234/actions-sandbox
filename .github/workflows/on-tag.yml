@@ -9,7 +9,7 @@ jobs:
     name: Prepare
     uses: ./.github/workflows/prepare.yml
     with:
-      verify-tag: true
+      verify_tag: true
 
   build:
     name: Build
