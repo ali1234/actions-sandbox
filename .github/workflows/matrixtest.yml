@@ -1,0 +1,51 @@
+# Build Github Action, to run a test build on all targets
+# (Linux, Blit, MacOS, Visual Studio) when the project is checked in.
+#
+# Thanks in large part to the phenomenal examples of DaftFreak.
+
+name: Matrix Test
+
+on:
+  push:
+    branches:
+      - '**'
+
+
+jobs:
+  build:
+    name: ${{matrix.name}}
+    continue-on-error: ${{!!matrix.allowfail}}
+    strategy:
+      matrix:
+        include:
+          - name: A
+            fail: false
+
+          - name: B
+            fail: true
+            allowfail: true
+
+          - name: C
+            fail: true
+            allowfail: true
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Run
+        run: |
+          /bin/true
+
+      - name: Fail
+        if: matrix.fail
+        run: |
+          /bin/false
+
+      - name: Wait
+        run: |
+          /usr/bin/sleep 5
+
+      - name: Wait More
+        run: |
+          /usr/bin/sleep 5
